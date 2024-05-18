@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kevin B. Miller">
+<meta name="dcterms.date" content="2024-05-07">
+
+<title>Capstone Report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="capstone_report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="capstone_report_files/libs/quarto-html/quarto.js"></script>
+<script src="capstone_report_files/libs/quarto-html/popper.min.js"></script>
+<script src="capstone_report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="capstone_report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="capstone_report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="capstone_report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="capstone_report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="capstone_report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="capstone_report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capstone Report</h1>
+<p class="subtitle lead">Chi-Square and Random Forest Regression with Data Science Jobs Dataset</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kevin B. Miller </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 7, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+  <li><a href="#introduction-and-research-question" id="toc-introduction-and-research-question">1: Introduction and Research Question</a>
+  <ul>
+  <li><a href="#research-question-and-hypotheses" id="toc-research-question-and-hypotheses">1.1: Research Question and Hypotheses</a></li>
+  </ul></li>
+  <li><a href="#data-collection" id="toc-data-collection">2: Data Collection</a>
+  <ul>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis">2.1: Exploratory Data Analysis</a></li>
+  </ul></li>
+  <li><a href="#data-extraction-and-preparation" id="toc-data-extraction-and-preparation">3: Data Extraction and Preparation</a>
+  <ul>
+  <li><a href="#a-chi-square-model-preparation" id="toc-a-chi-square-model-preparation">3.A: Chi-Square Model Preparation</a></li>
+  <li><a href="#b-random-forest-regressor-model-preparation" id="toc-b-random-forest-regressor-model-preparation">3.B: Random Forest Regressor Model Preparation</a>
+  <ul>
+  <li><a href="#b.1-encoding-section" id="toc-b.1-encoding-section">3.B.1: Encoding Section</a></li>
+  <li><a href="#b.2-feature-selection" id="toc-b.2-feature-selection">3.B.2: Feature Selection</a></li>
+  <li><a href="#b.3-train-test-split" id="toc-b.3-train-test-split">3.B.3: Train-Test-Split</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis">4: Analysis</a>
+  <ul>
+  <li><a href="#a-chi-square-model" id="toc-a-chi-square-model">4.A: Chi-Square Model</a>
+  <ul>
+  <li><a href="#a.1-omnibus" id="toc-a.1-omnibus">4.A.1: Omnibus</a></li>
+  <li><a href="#a.2-post-hoc-tests" id="toc-a.2-post-hoc-tests">4.A.2: Post Hoc Tests</a></li>
+  <li><a href="#a.3-chi-square-visualizations" id="toc-a.3-chi-square-visualizations">4.A.3: Chi-Square Visualizations</a></li>
+  </ul></li>
+  <li><a href="#b-random-forest-regressor-model" id="toc-b-random-forest-regressor-model">4.B: Random Forest Regressor Model</a>
+  <ul>
+  <li><a href="#b.1-grid-search-for-rfr" id="toc-b.1-grid-search-for-rfr">4.B.1: Grid Search for RFR</a></li>
+  <li><a href="#b.2-train-and-test-model-performance" id="toc-b.2-train-and-test-model-performance">4.B.2: Train and Test Model Performance</a></li>
+  <li><a href="#b.3-feature-importances-and-tree-diagram" id="toc-b.3-feature-importances-and-tree-diagram">4.B.3: Feature Importances and Tree Diagram</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-summary-and-implications" id="toc-data-summary-and-implications">5: Data Summary and Implications</a></li>
+  <li><a href="#references" id="toc-references">References</a></li>
+  </ul>
+</nav>
+<p>This work represents a finalized Capstone Report for my Master’s of Science in Data Analytics from Western Governors University (WGU). To comply with WGU’s academic integrity guidelines, the present document was not submitted as part of my Capstone. Rather, this report represents an extension of the project that showcases my work without making my submitted materials publicly available.</p>
+<div style="page-break-after: always;"></div>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>The growth of data science as a field has produced simultaneous increases in role diversification. The present study further characterized differences between job roles by examining whether experience levels varied between data science job categories. This study focused on a subset of publicly available data comprising data science employees working full-time in the U.S. (<em>N</em> = 12,389). A Chi-Square Test of Independence with subsequent post hoc tests analyzed the association between experience level and job category. A Random Forest Regression model was used to predict salaries from experience level, job category, and work setting. Experience level composition varied between job categories (<em>X<sup>2</sup></em> = 1003.54, <em>p</em> &lt; .001), with each job category differing from all others (<em>p</em>-range: <em>p</em> &lt; .001 - <em>p</em> = .001). Residual analysis revealed two experience level-job category intersections with substantially greater observed counts than expected: executive employees in leadership roles and entry-level employees in data analysis roles. Employees in these experience levels were otherwise underrepresented, whereas senior employees comprised a sizable portion of each job category. The Random Forest Regression model explained roughly 25% of the variance in employee salary. Salary estimates were higher for employees in machine learning or AI-related roles or senior positions, and lower for employees in data analysis roles. This study further characterized differences between data science roles, most notably for experience levels typically found in each. These findings have implications for the accessibility of these roles, particularly for entry-level employees, who may have fewer attainable job roles.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="introduction-and-research-question" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-research-question">1: Introduction and Research Question</h2>
+<p>After being heralded as the “sexiest job of the 21st century” <span class="citation" data-cites="davenport2012">(<a href="#ref-davenport2012" role="doc-biblioref">Davenport &amp; Patil, 2012</a>)</span>, the data scientist role met these lofty expectations <span class="citation" data-cites="davenport2022">(<a href="#ref-davenport2022" role="doc-biblioref">Davenport &amp; Patil, 2022</a>)</span>, and is expected to continue growing through 2032 <span class="citation" data-cites="datasci2024">(<a href="#ref-datasci2024" role="doc-biblioref">U.S. Bureau of Labor Statistics, 2024</a>)</span>. The responsibilities of this role grew simultaneously, requiring more specialized data science roles be created to focus on a portion of the data science process <span class="citation" data-cites="davenport2022">(<a href="#ref-davenport2022" role="doc-biblioref">Davenport &amp; Patil, 2022</a>)</span>. Examples of these expanded roles include the data engineer and data analyst <span class="citation" data-cites="rosidi2023">(<a href="#ref-rosidi2023" role="doc-biblioref">Rosidi, 2023</a>)</span>, with the former focusing on the quality and accessibility of data and the latter focusing on analysis and reporting of data. Yet with seemingly more job roles, demand, and resources to learn data science than ever <span class="citation" data-cites="davenport2022">(<a href="#ref-davenport2022" role="doc-biblioref">Davenport &amp; Patil, 2022</a>)</span>, many of those attempting to break into the field find themselves frustrated and disillusioned <span class="citation" data-cites="selvaraj2022">(<a href="#ref-selvaraj2022" role="doc-biblioref">Selvaraj, 2022</a>)</span>.</p>
+<p>This mismatch between the expectations and experiences of data science hopefuls underscores the need to characterize the skills and experiences necessary to succeed in a data science role. Greater transparency surrounding these factors would demystify the field as a whole and provide a better road map for employment-ready data science professionals. Using an open dataset on data science jobs from Kaggle <span class="citation" data-cites="zangari">(<a href="#ref-zangari" role="doc-biblioref">Zangari, n.d.</a>)</span>, this study sought to discern whether there was a categorical association between experience level and job category in data science jobs. Following a statistically significant Chi-Square Test of Independence omnibus test, the experience level composition of individual job categories would be compared using the same Chi-Square test. An additional Random Forest Regression (RFR) model was used to estimate salary from experience level, job category, and work setting.</p>
+<section id="research-question-and-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="research-question-and-hypotheses">1.1: Research Question and Hypotheses</h3>
+<p>Does experience level composition vary between data science job categories?</p>
+<p>Null Hypothesis (H<sub>0</sub>): The proportion of employees at each experience level does not vary between job categories in the dataset.</p>
+<p>Alternative Hypothesis (H<sub>A</sub>): The proportion of employees at each experience level varies between job categories in the dataset.</p>
+</section>
+</section>
+<section id="data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection">2: Data Collection</h2>
+<p>This data used in this study is publicly available on Kaggle <span class="citation" data-cites="zangari">(<a href="#ref-zangari" role="doc-biblioref">Zangari, n.d.</a>)</span>. The data was originally collected and compiled by <span class="citation" data-cites="getafu2024">ai-jobs.net (<a href="#ref-getafu2024" role="doc-biblioref">2024</a>)</span>, and features responses from data science professionals and employers. The main adaptation made in the Kaggle version was the addition of the <code>job_categories</code> feature, which collapsed 149 unique job titles into ten general categories. This was highly advantageous for the scope of this study, as it would be difficult to compare and interpret differences between 149 different job titles.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import useful libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in csv file as dataframe</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>job_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/jobs_in_data_2024.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="exploratory-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis">2.1: Exploratory Data Analysis</h3>
+<p>The dataset contained 14,199 records without any missing values for any columns. The chronological range of responses began in 2020, with some responses as recent as this year (i.e., 2024). Since some features pertained to similar constructs (e.g., <code>job_title</code> and <code>job_category</code>), it was important to gauge the usability of features and levels therein. For instance, some features had a large number of levels (e.g., <code>job_title</code>, <code>employee_residence</code>, and <code>company_location</code>), which can be difficult to analyze. Additionally, features like <code>employment_type</code>, <code>employee_residence</code>, and <code>company_location</code> exhibited considerable categorical imbalances, with the vast majority of responses belonging to one category.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get initial info for df</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>job_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 14199 entries, 0 to 14198
+Data columns (total 12 columns):
+ #   Column              Non-Null Count  Dtype 
+---  ------              --------------  ----- 
+ 0   work_year           14199 non-null  int64 
+ 1   experience_level    14199 non-null  object
+ 2   employment_type     14199 non-null  object
+ 3   job_title           14199 non-null  object
+ 4   salary              14199 non-null  int64 
+ 5   salary_currency     14199 non-null  object
+ 6   salary_in_usd       14199 non-null  int64 
+ 7   employee_residence  14199 non-null  object
+ 8   work_setting        14199 non-null  object
+ 9   company_location    14199 non-null  object
+ 10  company_size        14199 non-null  object
+ 11  job_category        14199 non-null  object
+dtypes: int64(3), object(9)
+memory usage: 1.3+ MB</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get number of unique values for each variable </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> job_df.columns:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(column, <span class="bu">len</span>(job_df[column].value_counts()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>work_year 5
+experience_level 4
+employment_type 4
+job_title 149
+salary 2229
+salary_currency 12
+salary_in_usd 2578
+employee_residence 86
+work_setting 3
+company_location 74
+company_size 3
+job_category 10</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get value counts for each object variable</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> job_df.columns:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> job_df[column].dtype <span class="op">==</span> <span class="bu">object</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(job_df[column].value_counts(), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>experience_level
+Senior         9381
+Mid-level      3339
+Entry-level    1063
+Executive       416
+Name: count, dtype: int64 
+
+employment_type
+Full-time    14139
+Contract        26
+Part-time       22
+Freelance       12
+Name: count, dtype: int64 
+
+job_title
+Data Engineer                    3059
+Data Scientist                   2910
+Data Analyst                     2120
+Machine Learning Engineer        1488
+Research Scientist                454
+                                 ... 
+Data Analytics Associate            1
+Analytics Engineering Manager       1
+Sales Data Analyst                  1
+AWS Data Architect                  1
+Consultant Data Engineer            1
+Name: count, Length: 149, dtype: int64 
+
+salary_currency
+USD    13146
+GBP      538
+EUR      422
+CAD       51
+AUD       12
+PLN        7
+CHF        6
+SGD        6
+BRL        4
+TRY        3
+DKK        3
+NZD        1
+Name: count, dtype: int64 
+
+employee_residence
+United States     12418
+United Kingdom      616
+Canada              371
+Spain               131
+Germany              90
+                  ...  
+Andorra               1
+Uganda                1
+Oman                  1
+Qatar                 1
+Luxembourg            1
+Name: count, Length: 86, dtype: int64 
+
+work_setting
+In-person    9413
+Remote       4573
+Hybrid        213
+Name: count, dtype: int64 
+
+company_location
+United States           12465
+United Kingdom            623
+Canada                    373
+Spain                     127
+Germany                    96
+                        ...  
+Andorra                     1
+Qatar                       1
+Mauritius                   1
+Gibraltar                   1
+Moldova, Republic of        1
+Name: count, Length: 74, dtype: int64 
+
+company_size
+M    13112
+L      919
+S      168
+Name: count, dtype: int64 
+
+job_category
+Data Science and Research         4675
+Data Engineering                  3157
+Data Analysis                     2204
+Machine Learning and AI           2148
+Leadership and Management          791
+BI and Visualization               600
+Data Architecture and Modeling     419
+Data Management and Strategy       115
+Data Quality and Operations         79
+Cloud and Database                  11
+Name: count, dtype: int64 
+</code></pre>
+</div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show distribution for salary_in_usd</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(job_df[<span class="st">'salary_in_usd'</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show distribution for salary</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(job_df[<span class="st">'salary'</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-execution_count="6">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="capstone_report_files/figure-html/cell-7-output-1.png" class="img-fluid" width="593"></p>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="capstone_report_files/figure-html/cell-7-output-2.png" class="img-fluid" width="593"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-extraction-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction-and-preparation">3: Data Extraction and Preparation</h2>
+<p>Due to categorical imbalances shown in the previous section, the dataset was filtered to only include employees residing in the U.S. (<code>employee_residence</code>), working for a U.S.-based company (<code>company_location</code>), and working full-time (<code>employment_type</code>). While this reduced the potential generalizability of findings, it was important to recognize that the data was already biased towards these groups, and any attempt to generalize beyond that would be undermined to begin with. Filtering for these categories reduced the number of observations to 12,389, which constituted less than 13% data loss. Features <code>work_setting</code> and <code>company_size</code> were not filtered to remedy categorical imbalances, as each feature contained only three levels, and the degree of the imbalance was less concerning. Potential outliers and skewness in <code>salary_in_usd</code> were not treated, as Random Forest models are robust to outliers and extreme values <span class="citation" data-cites="deori2023">(<a href="#ref-deori2023" role="doc-biblioref">Deori, 2023</a>)</span>, and high salaries were potentially noteworthy in the RFR model.</p>
+<p>Of the twelve original features, only four were kept for analyses: <code>experience_level</code>, <code>salary_in_usd</code>, <code>work_setting</code>, and <code>job_category</code>. After filtering for <code>employment_type</code>, <code>employee_residence</code>, <code>company_location</code>, these three features were excluded on the basis that each was no longer a variable (i.e., each only had one value). The feature <code>job_category</code> was used place of <code>job_title</code>, as the former had far lower cardinality (i.e., ten unique value vs.&nbsp;149), making it far easier to incorporate in analyses. Filtering by country meant <code>salary_in_usd</code> could be used in place of <code>salary</code> and <code>salary_currency</code>, as conversions would not be necessary. Features <code>work_year</code> and <code>company_size</code> would have been nice to add to the salary estimation Random Forest Regression model, but both had sub-optimal distributions and level structures to analyze.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create separate df for just US employees working for US companies</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>us_job_df <span class="op">=</span> job_df.loc[(job_df[<span class="st">'employee_residence'</span>] <span class="op">==</span> <span class="st">'United States'</span>) <span class="op">&amp;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                       (job_df[<span class="st">'company_location'</span>] <span class="op">==</span> <span class="st">'United States'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter df to only include full-time employees</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>us_job_df <span class="op">=</span> us_job_df.loc[us_job_df[<span class="st">'employment_type'</span>] <span class="op">==</span> <span class="st">'Full-time'</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(us_job_df[<span class="st">'employment_type'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>employment_type
+Full-time    12389
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reset index to align with observations</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>us_job_df.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only relevant variables</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>refined_us_job_df <span class="op">=</span> us_job_df[[<span class="st">'experience_level'</span>, <span class="st">'salary_in_usd'</span>, <span class="st">'work_setting'</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'job_category'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a-chi-square-model-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="a-chi-square-model-preparation">3.A: Chi-Square Model Preparation</h3>
+<p>Initial cross tabulations characterized the expected frequencies of <code>experience_level</code> and <code>job_category</code> before running the Chi-Square model (see <a href="#tbl-exp-cts">Table&nbsp;1</a>). The a-priori criteria defined in this project’s proposal was that any job categories with fewer than five expected counts in any cell would be combined with other job categories meeting this criteria. Such low expected counts would be abnormally low for a dataset of this size, and collapsing categories can serve as a sound solution without incurring data loss <span class="citation" data-cites="bewick2003">(<a href="#ref-bewick2003" role="doc-biblioref">Bewick et al., 2003</a>)</span>. The job categories Cloud and Database, Data Management and Strategy, and Data Quality and Operations all had fewer than five expected counts for at least one experience level, leading these to be combined into one category (see <a href="#tbl-exp-cts-1">Table&nbsp;1 (a)</a>). Rather than labeling this category as “Other,” these categories all pertained to Data Management, which served as a more descriptive label (see <a href="#tbl-exp-cts-2">Table&nbsp;1 (b)</a>). The final cross tabulation to be used in the Chi-Square analysis was saved as <code>trans_refined_ct</code>.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create crosstab for experience_level and job_category, with margins</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#pd.set_option('display.float_format', lambda x: '{0:.2f}' % x)</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.float_format'</span>, <span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">%.3f</span><span class="st">'</span> <span class="op">%</span> x)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.precision'</span>, <span class="dv">3</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#pd.set_option('display.precision', 2)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>cross_tab <span class="op">=</span> pd.crosstab(refined_us_job_df[<span class="st">'experience_level'</span>], </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                        refined_us_job_df[<span class="st">'job_category'</span>], </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                        margins<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain expected values for crosstab</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>expected_table <span class="op">=</span> sm.stats.Table(cross_tab)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#expected_table.fittedvalues.round(2).T</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create copy before transforming levels</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ct_us_job_df <span class="op">=</span> refined_us_job_df.copy(deep<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert 3 levels to Data Management</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ct_us_job_df.replace({<span class="st">'job_category'</span>: </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                      {<span class="st">'Cloud and Database'</span>: <span class="st">'Data Management'</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'Data Management and Strategy'</span>: <span class="st">'Data Management'</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'Data Quality and Operations'</span>: <span class="st">'Data Management'</span>}}, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                      inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define and output new contingency table</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>refined_ct <span class="op">=</span> pd.crosstab(ct_us_job_df[<span class="st">'experience_level'</span>], </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                         ct_us_job_df[<span class="st">'job_category'</span>])</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>refined_expected_table <span class="op">=</span> sm.stats.Table(refined_ct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create expected table with margins</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>marginal_ct <span class="op">=</span> pd.crosstab(ct_us_job_df[<span class="st">'experience_level'</span>], </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                          ct_us_job_df[<span class="st">'job_category'</span>], margins<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>marginal_expected_table <span class="op">=</span> sm.stats.Table(marginal_ct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create rounded, transposed versions of tables</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ct_exp_md <span class="op">=</span> expected_table.fittedvalues.<span class="bu">round</span>(<span class="dv">2</span>).T</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>ct_ref_exp_md <span class="op">=</span> marginal_expected_table.fittedvalues.<span class="bu">round</span>(<span class="dv">2</span>).T</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display markdown versions of tables</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>display(Markdown(ct_exp_md.to_markdown()))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>display(Markdown(ct_ref_exp_md.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-exp-cts" class="cell tbl-parent quarto-layout-panel anchored" data-execution_count="17">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;1: Original and refined expected counts contingency tables.</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-exp-cts-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-exp-cts" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table table-sm table-striped small">
+<caption>(a) Original (ten job categories)</caption>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">job_category</th>
+<th style="text-align: right;">Entry-level</th>
+<th style="text-align: right;">Executive</th>
+<th style="text-align: right;">Mid-level</th>
+<th style="text-align: right;">Senior</th>
+<th style="text-align: right;">All</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BI and Visualization</td>
+<td style="text-align: right;">33.39</td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">115.16</td>
+<td style="text-align: right;">365.96</td>
+<td style="text-align: right;">529.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cloud and Database</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">7.94</td>
+<td style="text-align: right;">11.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Analysis</td>
+<td style="text-align: right;">119.19</td>
+<td style="text-align: right;">55.39</td>
+<td style="text-align: right;">411.09</td>
+<td style="text-align: right;">1306.42</td>
+<td style="text-align: right;">1891.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Architecture and Modeling</td>
+<td style="text-align: right;">23.77</td>
+<td style="text-align: right;">11.05</td>
+<td style="text-align: right;">81.97</td>
+<td style="text-align: right;">260.49</td>
+<td style="text-align: right;">377.23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Engineering</td>
+<td style="text-align: right;">175.44</td>
+<td style="text-align: right;">81.54</td>
+<td style="text-align: right;">605.12</td>
+<td style="text-align: right;">1923.03</td>
+<td style="text-align: right;">2784.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Management and Strategy</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">21.13</td>
+<td style="text-align: right;">67.15</td>
+<td style="text-align: right;">97.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Quality and Operations</td>
+<td style="text-align: right;">4.17</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">14.39</td>
+<td style="text-align: right;">45.75</td>
+<td style="text-align: right;">66.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Science and Research</td>
+<td style="text-align: right;">260.55</td>
+<td style="text-align: right;">121.1</td>
+<td style="text-align: right;">898.66</td>
+<td style="text-align: right;">2855.9</td>
+<td style="text-align: right;">4135.79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leadership and Management</td>
+<td style="text-align: right;">43.15</td>
+<td style="text-align: right;">20.06</td>
+<td style="text-align: right;">148.84</td>
+<td style="text-align: right;">472.99</td>
+<td style="text-align: right;">684.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine Learning and AI</td>
+<td style="text-align: right;">114.02</td>
+<td style="text-align: right;">52.99</td>
+<td style="text-align: right;">393.27</td>
+<td style="text-align: right;">1249.8</td>
+<td style="text-align: right;">1809.91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">All</td>
+<td style="text-align: right;">780.46</td>
+<td style="text-align: right;">362.73</td>
+<td style="text-align: right;">2691.86</td>
+<td style="text-align: right;">8554.57</td>
+<td style="text-align: right;">12388.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-exp-cts-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-exp-cts" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table table-sm table-striped small">
+<caption>(b) Refined (eight job categories)</caption>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">job_category</th>
+<th style="text-align: right;">Entry-level</th>
+<th style="text-align: right;">Executive</th>
+<th style="text-align: right;">Mid-level</th>
+<th style="text-align: right;">Senior</th>
+<th style="text-align: right;">All</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BI and Visualization</td>
+<td style="text-align: right;">33.38</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">115.16</td>
+<td style="text-align: right;">365.97</td>
+<td style="text-align: right;">529.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Analysis</td>
+<td style="text-align: right;">119.15</td>
+<td style="text-align: right;">55.32</td>
+<td style="text-align: right;">411.1</td>
+<td style="text-align: right;">1306.46</td>
+<td style="text-align: right;">1891.96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Architecture and Modeling</td>
+<td style="text-align: right;">23.76</td>
+<td style="text-align: right;">11.03</td>
+<td style="text-align: right;">81.97</td>
+<td style="text-align: right;">260.5</td>
+<td style="text-align: right;">377.24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Engineering</td>
+<td style="text-align: right;">175.39</td>
+<td style="text-align: right;">81.43</td>
+<td style="text-align: right;">605.14</td>
+<td style="text-align: right;">1923.09</td>
+<td style="text-align: right;">2784.94</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Management</td>
+<td style="text-align: right;">10.97</td>
+<td style="text-align: right;">5.09</td>
+<td style="text-align: right;">37.86</td>
+<td style="text-align: right;">120.32</td>
+<td style="text-align: right;">174.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Science and Research</td>
+<td style="text-align: right;">260.48</td>
+<td style="text-align: right;">120.93</td>
+<td style="text-align: right;">898.69</td>
+<td style="text-align: right;">2855.98</td>
+<td style="text-align: right;">4135.92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leadership and Management</td>
+<td style="text-align: right;">43.14</td>
+<td style="text-align: right;">20.03</td>
+<td style="text-align: right;">148.84</td>
+<td style="text-align: right;">473</td>
+<td style="text-align: right;">684.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine Learning and AI</td>
+<td style="text-align: right;">113.99</td>
+<td style="text-align: right;">52.92</td>
+<td style="text-align: right;">393.29</td>
+<td style="text-align: right;">1249.84</td>
+<td style="text-align: right;">1809.96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">All</td>
+<td style="text-align: right;">780.23</td>
+<td style="text-align: right;">362.24</td>
+<td style="text-align: right;">2691.95</td>
+<td style="text-align: right;">8554.83</td>
+<td style="text-align: right;">12388.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save final contingency table for use in analyses</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>trans_refined_ct <span class="op">=</span> refined_ct.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b-random-forest-regressor-model-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="b-random-forest-regressor-model-preparation">3.B: Random Forest Regressor Model Preparation</h3>
+<section id="b.1-encoding-section" class="level4">
+<h4 class="anchored" data-anchor-id="b.1-encoding-section">3.B.1: Encoding Section</h4>
+<p>Since scikit-learn’s RFR implementation can only accept numeric features, predictors for the RFR model (<code>experience_level</code>, <code>work_setting</code>, and <code>job_category</code>) were transformed using a one-hot encoding (OHE) method. While added sparsity from OHE features can reduce model efficiency and performance <span class="citation" data-cites="ravi2022">(<a href="#ref-ravi2022" role="doc-biblioref">Ravi, 2022</a>)</span>, other encoding methods that do not increase sparsity (e.g., integer or ordinal encoding) can create unintended relationships between feature levels <span class="citation" data-cites="brownlee2020">(<a href="#ref-brownlee2020" role="doc-biblioref">Brownlee, 2020b</a>)</span>. Such ordered relationships would have been defensible for features <code>experience_level</code> and <code>work_setting</code>, but these were also encoded using an OHE method for consistency with the <code>job_category</code> feature. By using the <code>ColumnTransformer()</code> function to apply OHE, the target variable, <code>salary_in_usd</code>, was left unaffected, and the output was automatically transformed into a pandas dataframe. This resulted in seventeen OHE features, corresponding to the levels of <code>experience_level</code> (<em>n</em> = 4), <code>work_setting</code> (<em>n</em> = 3), and <code>job_category</code> (<em>n</em> = 10).</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import libraries necessary for transformation</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get list of categorical columns to transform</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>cat_df <span class="op">=</span> refined_us_job_df[[<span class="st">'experience_level'</span>, <span class="st">'work_setting'</span>, <span class="st">'job_category'</span>]]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="op">=</span> <span class="bu">list</span>(cat_df.keys())</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cat_cols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['experience_level', 'work_setting', 'job_category']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define transformer with non-sparse output</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>cat_transformer <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply transformer to cat_cols, while passing over salary_in_usd</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer([(<span class="st">'cat'</span>, cat_transformer, cat_cols)], remainder<span class="op">=</span><span class="st">'passthrough'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set output to pandas df and fit to data</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ct.set_output(transform<span class="op">=</span><span class="st">'pandas'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>dc_us_job_df <span class="op">=</span> ct.fit_transform(refined_us_job_df)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>dc_us_job_df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="139">
+<pre><code>Index(['cat__experience_level_Entry-level', 'cat__experience_level_Executive',
+       'cat__experience_level_Mid-level', 'cat__experience_level_Senior',
+       'cat__work_setting_Hybrid', 'cat__work_setting_In-person',
+       'cat__work_setting_Remote', 'cat__job_category_BI and Visualization',
+       'cat__job_category_Cloud and Database',
+       'cat__job_category_Data Analysis',
+       'cat__job_category_Data Architecture and Modeling',
+       'cat__job_category_Data Engineering',
+       'cat__job_category_Data Management and Strategy',
+       'cat__job_category_Data Quality and Operations',
+       'cat__job_category_Data Science and Research',
+       'cat__job_category_Leadership and Management',
+       'cat__job_category_Machine Learning and AI',
+       'remainder__salary_in_usd'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="b.2-feature-selection" class="level4">
+<h4 class="anchored" data-anchor-id="b.2-feature-selection">3.B.2: Feature Selection</h4>
+<p>Once the features were all in a numeric format, scikit-learn’s <code>SelectKBest()</code> discerned which variables were significantly associated with salary (see <a href="#tbl-feat-select">Table&nbsp;2</a> for a summary). The scoring function used was <code>f_regression()</code>, due to the target feature being continuous. Three features were not significantly associated with <code>salary_in_usd</code> at the <em>p</em> &lt; .05 level (<code>cat__work_setting_Hybrid</code>, <code>cat__job_category_Data Architecture and Modeling</code>, <code>cat__job_category_Cloud and Database</code>). These features were dropped from subsequent analyses, leaving a total of fourteen features.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import libraries for feature selection</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> SelectKBest, f_regression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create X and y arrays for feature selection and beyond</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dc_us_job_df[<span class="st">'remainder__salary_in_usd'</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dc_us_job_df.drop([<span class="st">'remainder__salary_in_usd'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'''X shape: </span><span class="sc">{</span>X<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, y shape: </span><span class="sc">{</span>y<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>X shape: (12389, 17), y shape: (12389,)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create SelectKBest instance using f_regression on all features</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>feature_rank <span class="op">=</span> SelectKBest(score_func<span class="op">=</span>f_regression, k<span class="op">=</span><span class="st">'all'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit to data</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>feature_rank.fit(X, y<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="142">
+<style>#sk-container-id-7 {color: black;background-color: white;}#sk-container-id-7 pre{padding: 0;}#sk-container-id-7 div.sk-toggleable {background-color: white;}#sk-container-id-7 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-7 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-7 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-7 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-7 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-7 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-7 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-7 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-7 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-7 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-7 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-7 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-7 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-7 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-7 div.sk-item {position: relative;z-index: 1;}#sk-container-id-7 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-7 div.sk-item::before, #sk-container-id-7 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-7 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-7 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-7 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-7 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-7 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-7 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-7 div.sk-label-container {text-align: center;}#sk-container-id-7 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-7 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-7" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SelectKBest(k='all', score_func=&lt;function f_regression at 0x3044caf20&gt;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" checked=""><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">SelectKBest</label><div class="sk-toggleable__content"><pre>SelectKBest(k='all', score_func=&lt;function f_regression at 0x3044caf20&gt;)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create df to show features, F-scores, and p-values</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>feature_df <span class="op">=</span> pd.DataFrame({<span class="st">'Feature'</span>: X.columns, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'F-score'</span>: feature_rank.scores_.<span class="bu">round</span>(<span class="dv">2</span>), </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'P-value'</span>: feature_rank.pvalues_.<span class="bu">round</span>(<span class="dv">3</span>)})</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort lowest p-values first </span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>feature_df <span class="op">=</span> feature_df.sort_values(by<span class="op">=</span><span class="st">'P-value'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>display(Markdown(feature_df.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="tbl-feat-select" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;2: Feature importances ranked by significance.</caption>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 65%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: right;">F-score</th>
+<th style="text-align: right;">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">cat__experience_level_Entry-level</td>
+<td style="text-align: right;">643.87</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">cat__job_category_Data Science and Research</td>
+<td style="text-align: right;">321.51</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">cat__job_category_Data Quality and Operations</td>
+<td style="text-align: right;">53.27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">cat__job_category_Data Management and Strategy</td>
+<td style="text-align: right;">97.05</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">cat__job_category_Data Analysis</td>
+<td style="text-align: right;">1323</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">cat__job_category_Leadership and Management</td>
+<td style="text-align: right;">23.38</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">cat__job_category_BI and Visualization</td>
+<td style="text-align: right;">89.74</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">cat__job_category_Machine Learning and AI</td>
+<td style="text-align: right;">791.71</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">cat__work_setting_In-person</td>
+<td style="text-align: right;">23.33</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">cat__experience_level_Senior</td>
+<td style="text-align: right;">838.27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">cat__experience_level_Mid-level</td>
+<td style="text-align: right;">509.32</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">cat__experience_level_Executive</td>
+<td style="text-align: right;">169.43</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">cat__work_setting_Remote</td>
+<td style="text-align: right;">21.73</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">cat__job_category_Data Engineering</td>
+<td style="text-align: right;">10.23</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">cat__work_setting_Hybrid</td>
+<td style="text-align: right;">2.18</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">cat__job_category_Data Architecture and Modeling</td>
+<td style="text-align: right;">1.64</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">cat__job_category_Cloud and Database</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.446</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop non-significant p-values from features</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.drop([<span class="st">'cat__work_setting_Hybrid'</span>, </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'cat__job_category_Data Architecture and Modeling'</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">'cat__job_category_Cloud and Database'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b.3-train-test-split" class="level4">
+<h4 class="anchored" data-anchor-id="b.3-train-test-split">3.B.3: Train-Test-Split</h4>
+<p>Following the conventions of machine learning best practices, the data for the RFR model was split into training and testing sets, with a ratio of 70:30 in favor of the training set. This ensures the RFR model can generalize beyond the data it trained on (i.e., to the testing set), since this resembles the type of predictive modeling paradigm wherein the predicted values are not available <span class="citation" data-cites="brownlee2020c">(<a href="#ref-brownlee2020c" role="doc-biblioref">Brownlee, 2020a</a>)</span>. This 70:30 split resulted in training sets with 8,672 observations and testing sets with 3,717 observations.</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create train and test arrays from X and y with 80% train</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, train_size<span class="op">=</span><span class="fl">.7</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                                                    random_state<span class="op">=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># output dimensions of train and test sets </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'''X_train shape: </span><span class="sc">{</span>X_train<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, X_test shape: </span><span class="sc">{</span>X_test<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, </span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="ss">      y_train shape: </span><span class="sc">{</span>y_train<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, y_test shape: </span><span class="sc">{</span>y_test<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>X_train shape: (8672, 14), X_test shape: (3717, 14), 
+      y_train shape: (8672,), y_test shape: (3717,)</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="analysis" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="analysis">4: Analysis</h2>
+<section id="a-chi-square-model" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="a-chi-square-model">4.A: Chi-Square Model</h3>
+<section id="a.1-omnibus" class="level4">
+<h4 class="anchored" data-anchor-id="a.1-omnibus">4.A.1: Omnibus</h4>
+<p>The omnibus-level Chi-Square Test of Independence was statistically significant (<em>X<sup>2</sup></em> = 1003.54, <em>p</em> &lt; .001). Thus, the null hypothesis was rejected, as the experience level composition of employees varied between job categories. This necessitated further post hoc testing to compare experience level composition between job categories.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># output omnibus Chi-Square result</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> chi2_contingency(trans_refined_ct)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'''Statistic: </span><span class="sc">{</span>result<span class="sc">.</span>statistic<span class="sc">}</span><span class="ss">, P-value: </span><span class="sc">{</span>result<span class="sc">.</span>pvalue<span class="sc">}</span><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Statistic: 1003.5413047409224, P-value: 4.926315041672239e-199</code></pre>
+</div>
+</div>
+</section>
+<section id="a.2-post-hoc-tests" class="level4">
+<h4 class="anchored" data-anchor-id="a.2-post-hoc-tests">4.A.2: Post Hoc Tests</h4>
+<p>The post hoc tests were completed using code adapted from <span class="citation" data-cites="neuhof2018">Neuhof (<a href="#ref-neuhof2018" role="doc-biblioref">2018</a>)</span>, as this helped streamline the process for the 28 job category comparisons. Instead of printing these comparisons as in the original code, converting to and printing a dataframe yielded a cleaner output (see <a href="#tbl-chi-sig">Table&nbsp;3</a>). Given the large dataset at hand, a more stringent Bonferroni correction was used to correct for alpha inflation <span class="citation" data-cites="jafari2019">(<a href="#ref-jafari2019" role="doc-biblioref">Jafari &amp; Ansari-Pour, 2019</a>)</span>, as this method multiples the statistical significance by the number of comparisons made. Despite this, all 28 comparisons were statistically significant after the Bonferroni correction (Bonferroni-corrected <em>p</em>-range: <em>p</em> &lt; .001 - <em>p</em> = .001). Focusing instead on the magnitude of the effect size in terms of <em>X<sup>2</sup></em>, the three strongest effects resulted from comparisons with Data Analysis (compared to Data Engineer, Machine Learning and AI, and Data Science and Research, respectively). The visualizations in the following suggest that Data Analysis had more Entry-level employees relative to the comparison categories.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code adapted from Neuhof (2018)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gathering all combinations for post-hoc chi2</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>all_combinations <span class="op">=</span> <span class="bu">list</span>(combinations(trans_refined_ct.index, <span class="dv">2</span>))</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>chi2_vals <span class="op">=</span> []</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>p_vals <span class="op">=</span> []</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> comb <span class="kw">in</span> all_combinations:</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># subset df into a dataframe containing only the pair "comb"</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    new_df <span class="op">=</span> trans_refined_ct[(trans_refined_ct.index <span class="op">==</span> comb[<span class="dv">0</span>]) <span class="op">|</span> </span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>                              (trans_refined_ct.index <span class="op">==</span> comb[<span class="dv">1</span>])]</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># running chi2 test</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    chi2, p, dof, ex <span class="op">=</span> chi2_contingency(new_df, correction<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    chi2_vals.append(chi2)</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    p_vals.append(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dataframe with combinations, effect sizes, and p-vals</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>chi2_df <span class="op">=</span> pd.DataFrame({<span class="st">'Combination'</span>: all_combinations, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'Statistic'</span>: chi2_vals, </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'p'</span>: p_vals})</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create Bonferroni-corrected p-values by multiplying by number of tests</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>chi2_df[<span class="st">'p-Bonf'</span>] <span class="op">=</span> (chi2_df[<span class="st">'p'</span>] <span class="op">*</span> <span class="dv">28</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>chi2_df[<span class="st">'Statistic'</span>] <span class="op">=</span> chi2_df[<span class="st">'Statistic'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>chi2_df[<span class="st">'p'</span>] <span class="op">=</span> chi2_df[<span class="st">'p'</span>].<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># sort df by effect size </span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>chi2_df <span class="op">=</span> chi2_df[[<span class="st">'Combination'</span>, <span class="st">'Statistic'</span>, <span class="st">'p'</span>, <span class="st">'p-Bonf'</span>]].sort_values(</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>by<span class="op">=</span><span class="st">'Statistic'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print as markdown</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>display(Markdown(chi2_df.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="tbl-chi-sig" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;3: Job category comparisons ranked by Chi-Square statistic.</caption>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 67%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Combination</th>
+<th style="text-align: right;">Statistic</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: right;">p-Bonf</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Data Engineering’)</td>
+<td style="text-align: right;">340.85</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">325.68</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Data Science and Research’)</td>
+<td style="text-align: right;">297.49</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">199.27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">(‘Leadership and Management’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">170.07</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Data Architecture and Modeling’)</td>
+<td style="text-align: right;">156.55</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">(‘Data Architecture and Modeling’, ‘Data Management’)</td>
+<td style="text-align: right;">149.71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">(‘Data Management’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">140.46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">(‘Data Science and Research’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">127.48</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">(‘Data Architecture and Modeling’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">122.45</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Data Architecture and Modeling’)</td>
+<td style="text-align: right;">96.26</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">(‘Data Engineering’, ‘Data Management’)</td>
+<td style="text-align: right;">86.38</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">84.62</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">(‘Data Engineering’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">75.22</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">(‘Data Management’, ‘Data Science and Research’)</td>
+<td style="text-align: right;">73.34</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">(‘Data Architecture and Modeling’, ‘Data Engineering’)</td>
+<td style="text-align: right;">70.68</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">(‘Data Architecture and Modeling’, ‘Data Science and Research’)</td>
+<td style="text-align: right;">63.27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">(‘Data Management’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">57.52</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">(‘Data Science and Research’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">56.39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Data Analysis’)</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">(‘Data Engineering’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">50.03</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">(‘Data Engineering’, ‘Data Science and Research’)</td>
+<td style="text-align: right;">39.92</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">(‘Data Analysis’, ‘Data Management’)</td>
+<td style="text-align: right;">30.91</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Leadership and Management’)</td>
+<td style="text-align: right;">29.99</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Data Engineering’)</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Data Management’)</td>
+<td style="text-align: right;">25.48</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">(‘BI and Visualization’, ‘Data Science and Research’)</td>
+<td style="text-align: right;">22.98</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">(‘Data Architecture and Modeling’, ‘Machine Learning and AI’)</td>
+<td style="text-align: right;">22.92</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="a.3-chi-square-visualizations" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="a.3-chi-square-visualizations">4.A.3: Chi-Square Visualizations</h4>
+<p>The contingency cross tabulation tables are shown below for the observed (see <a href="#tbl-ct-figs-1">Table&nbsp;4 (a)</a>) and expected counts (see <a href="#tbl-ct-figs-2">Table&nbsp;4 (b)</a>). Rather than focusing on these individually, a residual table was created to show observed counts deviated from the expected counts for each cell (see <a href="#tbl-ct-figs-3">Table&nbsp;4 (c)</a>). Residuals were calculated as the difference between the observed and expected counts divided by the expected values ((O - E) / E), which yields both the direction and magnitude of difference between the two. The accompanying heatmap (see <a href="#fig-chi-heatmap">Figure&nbsp;1</a>) shows where counts were greater than expected in red (e.g., Entry-level and Data Analysis or Executive and Leadership and Management) and fewer than expected in blue (e.g., Entry-level and Data Architecture and Modeling or Executive and Data Management). The bivariate plots compare the experience level composition across job categories, using the proportion (<a href="#fig-chi-bivariate-1">Figure&nbsp;2 (a)</a>) and count of employees (<a href="#fig-chi-bivariate-2">Figure&nbsp;2 (b)</a>) with each experience level. <a href="#fig-chi-bivariate-1">Figure&nbsp;2 (a)</a> re-iterates the findings that Data Analysis for Entry-level employees and Leadership and Management for Executive employees were relative peaks among less-represented experience levels. Conversely, Senior employees comprised a sizable portion of every job category, and the clear majority of a few (e.g., Data Architecture and Modeling, Machine Learning and AI). <a href="#fig-chi-bivariate-2">Figure&nbsp;2 (b)</a> uses number of employees for the y-axis variable, which takes into account size differences between job categories. This again depicts the relative commonality of Senior employees, as three of four largest categories (Data Science and Research, Data Engineering, and Machine Learning and AI) contained a substantial number of Senior employees.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set order of Chi-Square variables</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># set experience order</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>experience_order <span class="op">=</span> pd.CategoricalDtype([<span class="st">'Entry-level'</span>, <span class="st">'Mid-level'</span>, <span class="st">'Senior'</span>, </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">'Executive'</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>ct_us_job_df.experience_level <span class="op">=</span> ct_us_job_df.experience_level.astype(experience_order)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># set job category order to alphabetical</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>category_order <span class="op">=</span> pd.CategoricalDtype([<span class="st">'BI and Visualization'</span>, <span class="st">'Data Analysis'</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'Data Architecture and Modeling'</span>, </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'Data Engineering'</span>, <span class="st">'Data Management'</span>, </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'Data Science and Research'</span>, </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'Leadership and Management'</span>, </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'Machine Learning and AI'</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>ct_us_job_df.job_category <span class="op">=</span> ct_us_job_df.job_category.astype(category_order)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create crosstabs without margins</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>observed_ct <span class="op">=</span> pd.crosstab(ct_us_job_df[<span class="st">'experience_level'</span>],</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                          ct_us_job_df[<span class="st">'job_category'</span>], margins<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>expected_ct <span class="op">=</span> sm.stats.Table(observed_ct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert cts to dfs and transpose</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>expected_df <span class="op">=</span> pd.DataFrame(expected_ct.fittedvalues).T</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>observed_df <span class="op">=</span> pd.DataFrame(observed_ct).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run transformations to create residuals </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>resid_div_ct_df <span class="op">=</span> observed_df.subtract(expected_df)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>resid_div_ct_df <span class="op">=</span> resid_div_ct_df.divide(expected_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round all dfs for better outputting</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>expected_df <span class="op">=</span> expected_df.<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>observed_df <span class="op">=</span> observed_df.<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>resid_div_ct_df <span class="op">=</span> resid_div_ct_df.<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="page-columns page-full">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># display tables in markdown format</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>display(Markdown(observed_df.to_markdown()))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(expected_df.to_markdown(index<span class="op">=</span><span class="va">False</span>)))</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>display(Markdown(resid_div_ct_df.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-ct-figs" class="cell tbl-parent column-body-outset quarto-layout-panel anchored" data-execution_count="39">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;4: Contingency Tables</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-ct-figs-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-ct-figs" style="flex-basis: 65.0%;justify-content: center;">
+<table class="table table-sm table-striped small">
+<caption>(a) Observed counts.</caption>
+<colgroup>
+<col style="width: 38%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">job_category</th>
+<th style="text-align: right;">Entry-level</th>
+<th style="text-align: right;">Mid-level</th>
+<th style="text-align: right;">Senior</th>
+<th style="text-align: right;">Executive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BI and Visualization</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">325</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Analysis</td>
+<td style="text-align: right;">347</td>
+<td style="text-align: right;">450</td>
+<td style="text-align: right;">1075</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Architecture and Modeling</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">339</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Engineering</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">623</td>
+<td style="text-align: right;">1937</td>
+<td style="text-align: right;">130</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Management</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Science and Research</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">866</td>
+<td style="text-align: right;">2954</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leadership and Management</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">393</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine Learning and AI</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">1454</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-ct-figs-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-ct-figs" style="flex-basis: 35.0%;justify-content: center;">
+<table class="table table-sm table-striped small">
+<caption>(b) Expected counts.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Entry-level</th>
+<th style="text-align: right;">Mid-level</th>
+<th style="text-align: right;">Senior</th>
+<th style="text-align: right;">Executive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">33.39</td>
+<td style="text-align: right;">115.15</td>
+<td style="text-align: right;">365.95</td>
+<td style="text-align: right;">15.51</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">119.19</td>
+<td style="text-align: right;">411.08</td>
+<td style="text-align: right;">1306.38</td>
+<td style="text-align: right;">55.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.78</td>
+<td style="text-align: right;">82.02</td>
+<td style="text-align: right;">260.65</td>
+<td style="text-align: right;">11.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">175.44</td>
+<td style="text-align: right;">605.1</td>
+<td style="text-align: right;">1922.98</td>
+<td style="text-align: right;">81.48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.99</td>
+<td style="text-align: right;">37.91</td>
+<td style="text-align: right;">120.49</td>
+<td style="text-align: right;">5.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">260.54</td>
+<td style="text-align: right;">898.64</td>
+<td style="text-align: right;">2855.81</td>
+<td style="text-align: right;">121.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">43.15</td>
+<td style="text-align: right;">148.83</td>
+<td style="text-align: right;">472.98</td>
+<td style="text-align: right;">20.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">114.02</td>
+<td style="text-align: right;">393.26</td>
+<td style="text-align: right;">1249.76</td>
+<td style="text-align: right;">52.96</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-ct-figs-3" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-ct-figs" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table table-sm table-striped small">
+<caption>(c) Residual counts.</caption>
+<colgroup>
+<col style="width: 38%">
+<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">job_category</th>
+<th style="text-align: right;">Entry-level</th>
+<th style="text-align: right;">Mid-level</th>
+<th style="text-align: right;">Senior</th>
+<th style="text-align: right;">Executive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BI and Visualization</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">-0.11</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Analysis</td>
+<td style="text-align: right;">1.91</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">-0.18</td>
+<td style="text-align: right;">-0.64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Architecture and Modeling</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-0.59</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">-0.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Engineering</td>
+<td style="text-align: right;">-0.46</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data Management</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.35</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Science and Research</td>
+<td style="text-align: right;">-0.17</td>
+<td style="text-align: right;">-0.04</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-0.17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leadership and Management</td>
+<td style="text-align: right;">-0.63</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">-0.17</td>
+<td style="text-align: right;">1.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Machine Learning and AI</td>
+<td style="text-align: right;">-0.59</td>
+<td style="text-align: right;">-0.29</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">-0.43</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show residuals using heatmap using blue and red colors, centering on 0</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>resid_heatmap <span class="op">=</span> sns.heatmap(resid_div_ct_df, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>resid_heatmap.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Experience Level'</span>, ylabel<span class="op">=</span><span class="st">'Job Category'</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-chi-heatmap" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="capstone_report_files/figure-html/fig-chi-heatmap-output-1.png" width="762" height="429" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Chi-Square residual heatmap. Positive values denote greater observed counts than expected in red. Negative values denoting fewer observed counts than expected are shown in blue.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reset experience_order to show experience vertically</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>experience_order <span class="op">=</span> pd.CategoricalDtype([<span class="st">'Executive'</span>, <span class="st">'Senior'</span>, <span class="st">'Mid-level'</span>, </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">'Entry-level'</span>], ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>ct_us_job_df.experience_level <span class="op">=</span> ct_us_job_df.experience_level.astype(experience_order)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="page-columns page-full">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show bivariate plots for experience level and job category proportions and counts</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sns.color_palette(<span class="st">'colorblind'</span>):</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    prop_hist <span class="op">=</span> sns.histplot(data<span class="op">=</span>ct_us_job_df, x<span class="op">=</span><span class="st">'job_category'</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>                             hue<span class="op">=</span><span class="st">'experience_level'</span>, stat<span class="op">=</span><span class="st">'proportion'</span>, </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>                             multiple<span class="op">=</span><span class="st">'fill'</span>, discrete<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    prop_hist.set_xticklabels([<span class="st">'BI/Viz'</span>, <span class="st">'DA'</span>, <span class="st">'DArc/Modeling'</span>, <span class="st">'DE'</span>, <span class="st">'DM'</span>, </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'DS/Research'</span>, <span class="st">'Leadership'</span>, <span class="st">'ML/AI'</span>], rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    prop_hist.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Job Category'</span>, ylabel<span class="op">=</span><span class="st">'Proportion of Employees'</span>)<span class="co">#, </span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>                  <span class="co">#title='Experience Level Composition by Job Category')</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    prop_hist.get_legend().set_title(<span class="st">'Experience Level'</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    count_hist <span class="op">=</span> sns.histplot(data<span class="op">=</span>ct_us_job_df, x<span class="op">=</span><span class="st">'job_category'</span>, </span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>                              hue<span class="op">=</span><span class="st">'experience_level'</span>, multiple<span class="op">=</span><span class="st">'stack'</span>)</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    count_hist.set_xticklabels([<span class="st">'BI/Viz'</span>, <span class="st">'DA'</span>, <span class="st">'DArc/Modeling'</span>, <span class="st">'DE'</span>, <span class="st">'DM'</span>, </span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'DS/Research'</span>, <span class="st">'Leadership'</span>, <span class="st">'ML/AI'</span>], rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    count_hist.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Job Category'</span>, ylabel<span class="op">=</span><span class="st">'Number of Employees'</span>)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>    count_hist.get_legend().set_title(<span class="st">'Experience Level'</span>)</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-chi-bivariate" class="cell column-body-outset quarto-layout-panel" data-execution_count="42">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 49.5%;justify-content: center;">
+<div id="fig-chi-bivariate-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="capstone_report_files/figure-html/fig-chi-bivariate-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-chi-bivariate" width="589"></p>
+<figcaption class="figure-caption">(a) Proportion of job category with each experience level.</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.5%;justify-content: center;">
+<div id="fig-chi-bivariate-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="capstone_report_files/figure-html/fig-chi-bivariate-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-chi-bivariate" width="602"></p>
+<figcaption class="figure-caption">(b) Number of employees with experience level across job categories.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Experience level and job category composition. Abbreviations: BI/Viz: BI and Visualization; DA: Data Analysis; DArc/Modeling: Data Architecture and Modeling; DE: Data Engineering; DM: Data Management; DS/Research: Data Science and Research; Leadership: Leadership and Management; ML/AI: Machine Learning and AI.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="b-random-forest-regressor-model" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="b-random-forest-regressor-model">4.B: Random Forest Regressor Model</h3>
+<section id="b.1-grid-search-for-rfr" class="level4">
+<h4 class="anchored" data-anchor-id="b.1-grid-search-for-rfr">4.B.1: Grid Search for RFR</h4>
+<p>To create a more robust RFR model, hyperparameters of interest were tuned using <code>GridSearchCV</code> to evaluate hyperparameter combinations with the training data. The parameter grid was constructed using guidelines from <span class="citation" data-cites="ellis2022">Ellis (<a href="#ref-ellis2022" role="doc-biblioref">2022</a>)</span>, specifying values in a reasonable range for <code>n_estimators</code>, <code>max_features</code>, and one parameter to limit tree depth (e.g., <code>max_depth</code>). With root-mean-squared error (<em>RMSE</em>) as the a-priori error metric for the RFR model, the scoring metric for the grid search object was set to <code>neg_root_mean_squared_error</code>. This grid search object was supplied a default RFR model and the parameter grid, and subsequently fit to the <code>X_train</code> and <code>y_train</code> datasets for five cross-validation folds. The resulting best parameters were <code>max_depth</code> = 8, <code>max_features</code> = ‘sqrt’, and <code>n_estimators</code> = 50, which were used with the models in the next section (see section <a href="#b.2-train-and-test-model-performance">4.B.2: Train and Test Model Performance</a>).</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import libraries necessary for hyperparameter tuning</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define MSE for later use</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>MSE <span class="op">=</span> metrics.mean_squared_error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate baseline model</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>rf_model <span class="op">=</span> RandomForestRegressor(random_state<span class="op">=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># construct parameter grid to for hyperparameters of interest</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {<span class="st">'n_estimators'</span>: [<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">400</span>], </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'max_depth'</span>: [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="va">None</span>],</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'max_features'</span>: [<span class="st">'sqrt'</span>, <span class="st">'log2'</span>, <span class="va">None</span>]</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>              }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit GridSearchCV to rf_model with param_grid and scoring as negative RMSE</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>gs_rf <span class="op">=</span> GridSearchCV(rf_model, param_grid<span class="op">=</span>param_grid, </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                     scoring<span class="op">=</span><span class="st">'neg_root_mean_squared_error'</span>, cv<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit grid search object to data</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>gs_rf.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+<style>#sk-container-id-8 {color: black;background-color: white;}#sk-container-id-8 pre{padding: 0;}#sk-container-id-8 div.sk-toggleable {background-color: white;}#sk-container-id-8 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-8 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-8 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-8 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-8 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-8 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-8 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-8 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-8 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-8 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-8 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-8 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-8 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-8 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-8 div.sk-item {position: relative;z-index: 1;}#sk-container-id-8 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-8 div.sk-item::before, #sk-container-id-8 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-8 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-8 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-8 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-8 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-8 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-8 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-8 div.sk-label-container {text-align: center;}#sk-container-id-8 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-8 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-8" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=5, estimator=RandomForestRegressor(random_state=21),
+             param_grid={'max_depth': [2, 4, 8, None],
+                         'max_features': ['sqrt', 'log2', None],
+                         'n_estimators': [50, 100, 200, 400]},
+             scoring='neg_root_mean_squared_error')</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox"><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=5, estimator=RandomForestRegressor(random_state=21),
+             param_grid={'max_depth': [2, 4, 8, None],
+                         'max_features': ['sqrt', 'log2', None],
+                         'n_estimators': [50, 100, 200, 400]},
+             scoring='neg_root_mean_squared_error')</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox"><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor(random_state=21)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox"><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor(random_state=21)</pre></div></div></div></div></div></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># output best parameters from grid search</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gs_rf.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'max_depth': 8, 'max_features': 'sqrt', 'n_estimators': 50}</code></pre>
+</div>
+</div>
+</section>
+<section id="b.2-train-and-test-model-performance" class="level4">
+<h4 class="anchored" data-anchor-id="b.2-train-and-test-model-performance">4.B.2: Train and Test Model Performance</h4>
+<p>The training model performance was evaluated from the grid search object directly, from which the <em>RMSE</em> and <em>R<sup>2</sup></em> values were extracted. The final RFR model was created with tuned hyperparameters and fit to <code>X_train</code> and <code>y_train</code>, and subsequently used to predict <code>y_test</code> using <code>X_test</code>. Model performance was comparable in the training (<em>RMSE</em> = 53,050.72, <em>R<sup>2</sup></em> = .2448) and testing models (<em>RMSE</em> = 54,352.70, <em>R<sup>2</sup></em> = .2525). The testing model performance indicates that the features explained roughly 25% of the variance in salary, and the salary estimates were off by roughly $54,000 on average. The convergence between the error and explained variance metrics between the training and testing models suggest the model was not overfit to the training data.</p>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get RMSE and R2 from best grid search model (training)</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>grid_rmse <span class="op">=</span> (gs_rf.best_score_ <span class="op">*</span> <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Training RMSE: '</span>, <span class="bu">round</span>(grid_rmse, <span class="dv">2</span>))</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>grid_predict <span class="op">=</span> gs_rf.predict(X_train)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Training R-Squared: '</span>, <span class="bu">round</span>(metrics.r2_score(y_true<span class="op">=</span>y_train, </span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>      y_pred<span class="op">=</span>grid_predict), <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training RMSE:  53050.72
+Training R-Squared:  0.2448</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define final RFR model with best parameters</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>rfr_model <span class="op">=</span> RandomForestRegressor(max_depth<span class="op">=</span><span class="dv">8</span>, </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                                  max_features<span class="op">=</span><span class="st">'sqrt'</span>, </span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                                  n_estimators<span class="op">=</span><span class="dv">50</span>, </span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>                                  random_state<span class="op">=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit final model to X_train and y_train</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>rfr_model.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="168">
+<style>#sk-container-id-9 {color: black;background-color: white;}#sk-container-id-9 pre{padding: 0;}#sk-container-id-9 div.sk-toggleable {background-color: white;}#sk-container-id-9 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-9 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-9 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-9 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-9 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-9 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-9 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-9 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-9 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-9 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-9 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-9 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-9 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-9 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-9 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-9 div.sk-item {position: relative;z-index: 1;}#sk-container-id-9 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-9 div.sk-item::before, #sk-container-id-9 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-9 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-9 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-9 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-9 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-9 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-9 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-9 div.sk-label-container {text-align: center;}#sk-container-id-9 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-9 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-9" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestRegressor(max_depth=8, max_features='sqrt', n_estimators=50,
+                      random_state=21)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" checked=""><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor(max_depth=8, max_features='sqrt', n_estimators=50,
+                      random_state=21)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using that RFR model, predict y_test using X_test</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>y_test_pred <span class="op">=</span> rfr_model.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get RMSE and R2 values from test model</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>test_RMSE <span class="op">=</span> np.sqrt(MSE(y_test, y_test_pred))</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>test_R2 <span class="op">=</span> metrics.r2_score(y_test, y_test_pred)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Test RMSE: '</span>, <span class="bu">round</span>(test_RMSE, <span class="dv">2</span>))</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Test R-Squared: '</span>, <span class="bu">round</span>(test_R2, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test RMSE:  54352.7
+Test R-Squared:  0.2525</code></pre>
+</div>
+</div>
+</section>
+<section id="b.3-feature-importances-and-tree-diagram" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="b.3-feature-importances-and-tree-diagram">4.B.3: Feature Importances and Tree Diagram</h4>
+<p>Feature importances were extracted from the RFR model, converted to a dataframe, and sorted in descending order (see <a href="#tbl-feature-imps">Table&nbsp;5</a>). The values ranged from .008 to .286, with all features explaining at least some variance, and the magnitude gradually decreasing with each subsequent feature (see <a href="#fig-feat-imp">Figure&nbsp;3</a>). The top three features included the Data Analysis job category (.286), Machine Learning and AI job category (.162), and Senior experience level (.136). Unsurprisingly, these were the first three features used to split the data in the RFR tree diagram (see <a href="#fig-tree-three">Figure&nbsp;4</a>), which underscores each feature’s importance to estimating salary. The code for this diagram was adapted from a TensorFlow tutorial <span class="citation" data-cites="visualiz2024">(<a href="#ref-visualiz2024" role="doc-biblioref"><em>Visualizing TensorFlow Decision Forest Trees with Dtreeviz</em>, 2024</a>)</span>, and this figure makes it easy to interpret how the absence or presence of an experience level, job category, or work setting altered the RFR model’s salary estimate. With the depth of the model, however, only the first three levels of the diagram could be displayed before the clarity of the figure diminished.</p>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create df for features and corresponding importances </span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>feature_df <span class="op">=</span> pd.DataFrame({<span class="st">'Feature'</span>: X.columns, </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">'Importance'</span>: rfr_model.feature_importances_})</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the values with higher importances first</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>feature_df[<span class="st">'Importance'</span>] <span class="op">=</span> feature_df[<span class="st">'Importance'</span>].<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>feature_df <span class="op">=</span> feature_df.sort_values(by<span class="op">=</span><span class="st">'Importance'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="co"># display sorted df as markdown</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(feature_df.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="tbl-feature-imps" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;5: Sorted feature importances in Random Forest model.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: right;">Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">cat__job_category_Data Analysis</td>
+<td style="text-align: right;">0.286</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">cat__job_category_Machine Learning and AI</td>
+<td style="text-align: right;">0.162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">cat__experience_level_Senior</td>
+<td style="text-align: right;">0.136</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">cat__experience_level_Entry-level</td>
+<td style="text-align: right;">0.082</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">cat__experience_level_Mid-level</td>
+<td style="text-align: right;">0.082</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">cat__job_category_Data Science and Research</td>
+<td style="text-align: right;">0.079</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">cat__experience_level_Executive</td>
+<td style="text-align: right;">0.056</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">cat__job_category_BI and Visualization</td>
+<td style="text-align: right;">0.028</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">cat__job_category_Data Engineering</td>
+<td style="text-align: right;">0.022</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">cat__job_category_Data Management and Strategy</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">cat__work_setting_Remote</td>
+<td style="text-align: right;">0.015</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">cat__work_setting_In-person</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">cat__job_category_Leadership and Management</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">cat__job_category_Data Quality and Operations</td>
+<td style="text-align: right;">0.008</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create split version of encoded feature names</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>feature_df[<span class="st">'sep_Variable'</span>] <span class="op">=</span> feature_df[<span class="st">'Feature'</span>].<span class="bu">str</span>.split(<span class="vs">r'_'</span>, regex<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>                                                              expand<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># take last portion of the split for cleaner feature names</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>feature_df[<span class="st">'short_Variable'</span>] <span class="op">=</span> feature_df[<span class="st">'sep_Variable'</span>].<span class="bu">str</span>[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize feature importances in descending order </span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sns.color_palette(<span class="st">'colorblind'</span>):</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    feature_bar <span class="op">=</span> sns.barplot(data<span class="op">=</span>feature_df, x<span class="op">=</span><span class="st">'Importance'</span>, y<span class="op">=</span><span class="st">'short_Variable'</span>)</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>    feature_bar.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Impurity-based Feature Importance'</span>, ylabel<span class="op">=</span><span class="st">'Feature'</span>)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-feat-imp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="capstone_report_files/figure-html/fig-feat-imp-output-1.png" width="796" height="429" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Feature importances in Random Forest model.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell page-columns page-full" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code adapted from Visualizing TensorFlow Decision Trees with Dtreeviz (2024)</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dtreeviz</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create dtreeviz model from RFR model</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>viz_rfr_model <span class="op">=</span> dtreeviz.model(rfr_model.estimators_[<span class="dv">0</span>], X, y, </span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>                               tree_index<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>                               feature_names<span class="op">=</span>feature_df[<span class="st">'short_Variable'</span>], </span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>                               target_name<span class="op">=</span><span class="st">'Salary'</span>)</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co"># only show first three levels of depth for sake of clarity</span></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>viz_rfr_model.view(depth_range_to_display<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">2</span>], scale<span class="op">=</span><span class="fl">1.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-body" data-execution_count="174">
+<div id="fig-tree-three" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="capstone_report_files/figure-html/fig-tree-three-output-1.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Tree diagram from Random Forest model. Only the first three levels are shown to preserve figure clarity.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="data-summary-and-implications" class="level2">
+<h2 class="anchored" data-anchor-id="data-summary-and-implications">5: Data Summary and Implications</h2>
+<p>The results of the Chi-Square Test of Independence were statistically significant (see section <a href="#a.1-omnibus">4.A.1: Omnibus</a>), thus rejecting the null hypothesis that the experience level of employees did not vary between job categories (see section <a href="#research-question-and-hypotheses">1.1: Research Question and Hypotheses</a>). With regards to this study’s research question, experience level composition varied between job categories, which suggests that some data science positions are typically held by more experienced employees than others. One limitation of using a Chi-Square test with this data was that it may have been overpowered, as all job category post hoc comparisons exhibited significant differences, even following a Bonferroni correction (see section <a href="#a.2-post-hoc-tests">4.A.2: Post Hoc Tests</a>). This shifted the focus from statistical significance of the comparisons to the magnitude of the effects, as quantified by the <em>X<sup>2</sup></em> values and the residuals, (see section <a href="#a.3-chi-square-visualizations">4.A.3: Chi-Square Visualizations</a> for visualizations). Both metrics converged to suggest the Data Analysis job category was unique in its distribution of experience levels, which featured the highest proportion of entry-level employees.</p>
+<p>While the RFR model was not intended to test or evaluate hypotheses, the final model performed relatively well considering the challenges of the data (see section <a href="#b.2-train-and-test-model-performance">4.B.2: Train and Test Model Performance</a>). The features accounted for more than one-quarter of the variance in salary, which is impressive considering the fourteen encoded features originated from only three features. One limitation described in section <a href="#b.1-encoding-section">3.B.1: Encoding Section</a> was the use of sparse categorical data in the RFR model, which has been shown to diminish performance or interpretability in some Random Forest models <span class="citation" data-cites="ravi2022">(<a href="#ref-ravi2022" role="doc-biblioref">Ravi, 2022</a>)</span>. Interestingly, the RFR testing model performance (<em>R<sup>2</sup></em>) outperformed the training model slightly (.2525 compared to .2448), which was unexpected. This can likely be attributed to the idiosyncratic, random nature of the train-test-split function (see section <a href="#b.3-train-test-split">3.B.3: Train-Test-Split</a>), which may have given the testing set a slightly “easier” dataset to predict. Since the training model had a better <em>RMSE</em> value than the testing set (53,050.72 compared to 54,352.70), the training model still estimated salary better than the testing set, and the unexpected <em>R<sup>2</sup></em> comparison is likely not concerning.</p>
+<p>The results of this study may be helpful for characterizing the field of data science at large. Firstly, the analyses using the data at hand suggest that entry-level positions are relatively rare in data science. This may lend credence to the idea that fewer entry-level positions are available in the field <span class="citation" data-cites="selvaraj2022">(<a href="#ref-selvaraj2022" role="doc-biblioref">Selvaraj, 2022</a>)</span>, although, further studies should investigate this claim. The relative spike of entry-level employees in the data analysis job category supports multiple resources cited here <span class="citation" data-cites="selvaraj2022 simmons2023">(<a href="#ref-selvaraj2022" role="doc-biblioref">Selvaraj, 2022</a>; <a href="#ref-simmons2023" role="doc-biblioref">Simmons, 2023</a>)</span>. Each of these suggested a data analyst position may be an intermediate step for an entry-level employee to become a data scientist, and the results of this study suggest this may be plausible. Lastly, the results of the RFR model suggest some experience levels, job categories, and work settings tend to earn a higher salary than others. Notably, employees in the Data Analysis job category tended to earn less, whereas Senior employees, or employees in the Machine Learning and AI job category tended to earn more.</p>
+<p>Four considerations for future studies examining the field of data science are recommended following analyses here. One technical improvement would be to use an RFR model with non-sparse categorical features, to see if this potentially improves model performance or interpretability. An alternative to the scikit-learn workflow is the Distributed Random Forest model from <span class="citation" data-cites="distribu2024">H2O.ai (<a href="#ref-distribu2024" role="doc-biblioref">2024</a>)</span>, which can incorporate nominal feature structures without requiring transformations. Concerning the association between experience level and job category, obtaining each employee’s entry-level position to data science would help create more holistic, trajectory-based snapshots of data science careers. This could also disentangle whether some roles with higher proportions of entry-level employees (e.g., Data Analysis) could feasibly serve as an intermediate step to another position <span class="citation" data-cites="selvaraj2022 simmons2023">(<a href="#ref-selvaraj2022" role="doc-biblioref">Selvaraj, 2022</a>; <a href="#ref-simmons2023" role="doc-biblioref">Simmons, 2023</a>)</span>. Concerning the RFR model, including more features that might be associated with data science salaries (e.g., education level, years of employment, or geographic location) could improve salary estimates and model performance. Lastly, acquiring more stratified data with respect to employee status, employee residence, and company location would help generalize analyses beyond full-time employees, residing in the U.S., and working for a U.S.-based company.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-getafu2024" class="csl-entry" role="listitem">
+ai-jobs.net. (2024). <em>Get a full dataset of global AI, ML, Data Salaries</em>. <a href="https://ai-jobs.net/salaries/download/">https://ai-jobs.net/salaries/download/</a>
+</div>
+<div id="ref-bewick2003" class="csl-entry" role="listitem">
+Bewick, V., Cheek, L., &amp; Ball, J. (2003). Statistics review 8: Qualitative data - tests of association. <em>Critical Care</em>, <em>8</em>(1), 46. <a href="https://doi.org/10.1186/cc2428">https://doi.org/10.1186/cc2428</a>
+</div>
+<div id="ref-brownlee2020c" class="csl-entry" role="listitem">
+Brownlee, J. (2020a). <em>Train-test split for evaluating machine learning algorithms</em>. <a href="https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/">https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms/</a>
+</div>
+<div id="ref-brownlee2020" class="csl-entry" role="listitem">
+Brownlee, J. (2020b). <em>Why one-hot encode data in machine learning?</em> <a href="https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/">https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/</a>
+</div>
+<div id="ref-davenport2012" class="csl-entry" role="listitem">
+Davenport, T. H., &amp; Patil, D. J. (2012). Data scientist: The sexiest job of the 21st century. <em>Harvard Business Review</em>. <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</a>
+</div>
+<div id="ref-davenport2022" class="csl-entry" role="listitem">
+Davenport, T. H., &amp; Patil, D. J. (2022). Is data scientist still the sexiest job of the 21st century? <em>Harvard Business Review</em>. <a href="https://hbr.org/2022/07/is-data-scientist-still-the-sexiest-job-of-the-21st-century">https://hbr.org/2022/07/is-data-scientist-still-the-sexiest-job-of-the-21st-century</a>
+</div>
+<div id="ref-deori2023" class="csl-entry" role="listitem">
+Deori, T. (2023). <em>Demystifying Machine Learning Challenges: Outliers</em>. <a href="https://levelup.gitconnected.com/demystifying-machine-learning-challenges-outliers-34aa4f45a1b9">https://levelup.gitconnected.com/demystifying-machine-learning-challenges-outliers-34aa4f45a1b9</a>
+</div>
+<div id="ref-ellis2022" class="csl-entry" role="listitem">
+Ellis, C. (2022). <em>Hyperparameter tuning in random forests</em>. <a href="https://crunchingthedata.com/hyperparameter-tuning-in-random-forests/">https://crunchingthedata.com/hyperparameter-tuning-in-random-forests/</a>
+</div>
+<div id="ref-distribu2024" class="csl-entry" role="listitem">
+H2O.ai. (2024). <em>Distributed random forest (DRF) <span></span> H2O 3.46.0.1 documentation</em>. <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/drf.html">https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/drf.html</a>
+</div>
+<div id="ref-jafari2019" class="csl-entry" role="listitem">
+Jafari, M., &amp; Ansari-Pour, N. (2019). Why, when and how to adjust your p values? <em>Cell Journal (Yakhteh)</em>, <em>20</em>(4), 604–607. <a href="https://doi.org/10.22074/cellj.2019.5992">https://doi.org/10.22074/cellj.2019.5992</a>
+</div>
+<div id="ref-neuhof2018" class="csl-entry" role="listitem">
+Neuhof, M. (2018). <em>Chi-square (and post-hoc) tests in Python</em>. <a href="https://neuhofmo.github.io/chi-square-and-post-hoc-in-python/">https://neuhofmo.github.io/chi-square-and-post-hoc-in-python/</a>
+</div>
+<div id="ref-ravi2022" class="csl-entry" role="listitem">
+Ravi, R. (2022). <em>One-Hot Encoding is making your Tree-Based Ensembles worse, here<span>’</span>s why?</em> <a href="https://towardsdatascience.com/one-hot-encoding-is-making-your-tree-based-ensembles-worse-heres-why-d64b282b5769">https://towardsdatascience.com/one-hot-encoding-is-making-your-tree-based-ensembles-worse-heres-why-d64b282b5769</a>
+</div>
+<div id="ref-rosidi2023" class="csl-entry" role="listitem">
+Rosidi, N. (2023). <em>Navigating data science job titles: Data analyst vs. Data scientist vs. Data engineer</em>. <a href="https://www.kdnuggets.com/navigating-data-science-job-titles-data-analyst-vs-data-scientist-vs-data-engineer">https://www.kdnuggets.com/navigating-data-science-job-titles-data-analyst-vs-data-scientist-vs-data-engineer</a>
+</div>
+<div id="ref-selvaraj2022" class="csl-entry" role="listitem">
+Selvaraj, N. (2022). <em>Unable to land a data science job? Here<span>’</span>s why</em>. <a href="https://www.kdnuggets.com/unable-to-land-a-data-science-job-heres-why">https://www.kdnuggets.com/unable-to-land-a-data-science-job-heres-why</a>
+</div>
+<div id="ref-simmons2023" class="csl-entry" role="listitem">
+Simmons, L. (2023). <em>How to become a data scientist</em>. <a href="https://www.computerscience.org/careers/data-science/how-to-become/">https://www.computerscience.org/careers/data-science/how-to-become/</a>
+</div>
+<div id="ref-datasci2024" class="csl-entry" role="listitem">
+U.S. Bureau of Labor Statistics. (2024). <em>Data Scientists : Occupational Outlook Handbook: : U.S. Bureau of Labor Statistics</em>. <a href="https://www.bls.gov/ooh/math/data-scientists.htm">https://www.bls.gov/ooh/math/data-scientists.htm</a>
+</div>
+<div id="ref-visualiz2024" class="csl-entry" role="listitem">
+<em>Visualizing TensorFlow Decision Forest Trees with dtreeviz</em>. (2024). <a href="https://www.tensorflow.org/decision_forests/tutorials/dtreeviz_colab">https://www.tensorflow.org/decision_forests/tutorials/dtreeviz_colab</a>
+</div>
+<div id="ref-zangari" class="csl-entry" role="listitem">
+Zangari, M. (n.d.). <em>Jobs and Salaries in Data field 2024</em>.
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
