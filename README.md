@@ -2,6 +2,8 @@
 
 This project analyzed how typical experience levels (entry-level, mid-level, senior, or executive) varied between different job subcategories (e.g., data analysis, data engineering) in data science. The results have broader implications for what experience levels may be necessary for each type of data science job, particularly for those in the entry-level, who may have fewer options. Further analyses predicted job salary from available factors (data science job subcategory, experience level, or work setting), which further characerized the field at large. 
 
+The [rendered .html version](https://kmiller999.github.io/ds_portfolio/posts/capstone_report/code/capstone_report.html) of this project is available in my data science portfolio.
+
 ## Data Source
 
 The data used in this project ([Jobs and Salaries in Data field 2024](https://www.kaggle.com/datasets/murilozangari/jobs-and-salaries-in-data-field-2024)) was made publicly available on Kaggle by [murilozangari](https://www.kaggle.com/murilozangari). This dataset was licensed under the Apache License, Version 2.0, which is available within the data directory of this project (see [LICENSE-2.0.txt](./data/LICENSE-2.0.txt) for more details.)
@@ -28,6 +30,8 @@ The data used in this project ([Jobs and Salaries in Data field 2024](https://ww
  - Random Forest features explained 25% of job salary
 
 ## Usage
+
+To view this project, please visit the [page](https://kmiller999.github.io/ds_portfolio/posts/capstone_report/code/capstone_report.html) on my portfolio website. For questions or discussion, feel free to reach out to me to discuss further. 
 
 ## License
 
